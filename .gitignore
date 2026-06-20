@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Playwright reports and cache
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Allure reports
+allure-results/
+allure-report/
+
+# Screenshot and video
+screenshots/
+videos/
+
+# Vs Code
+vscode/
+
+# Environment variables
+.env
