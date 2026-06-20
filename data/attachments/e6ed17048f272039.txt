@@ -1,0 +1,497 @@
+# Page snapshot
+
+```yaml
+- banner:
+  - button
+  - text: STG
+  - button
+  - button
+  - button
+  - button
+  - button
+  - button
+  - button "Badge":
+    - status "Badge": 10+
+  - separator
+  - text: Trung Tâm
+  - img
+  - text: admin
+  - button
+- navigation:
+  - list:
+    - link "Trung tâm":
+      - /url: /dashboard-transaction
+    - link "Đặt hàng":
+      - /url: /order
+    - link "Hóa đơn":
+      - /url: /bill
+    - link "Nhập hàng":
+      - /url: /purchase-order
+    - link "Đặt hàng nhập":
+      - /url: /order-supplier
+    - link "Trả hàng nhập":
+      - /url: /purchase-return
+    - link "Trả hàng":
+      - /url: /return-product
+    - link "Chuyển hàng":
+      - /url: /transfer-order
+    - link "Vị trí kho":
+      - /url: /warehouse-location
+    - link "Kiện hàng":
+      - /url: /product-package
+    - link "Loại thu chi":
+      - /url: /transaction-type
+    - link "Sổ quỹ":
+      - /url: /cash-book
+    - option "Thống kê"
+- banner:
+  - text: Phiên bản1.0.145 ©Copyright 2026 by LuxOn VietNam
+  - separator
+  - img
+  - button
+- main:
+  - text: Đặt hàng nhập
+  - button "Làm mới":
+    - paragraph: Làm mới
+  - button "Thêm":
+    - paragraph: Thêm
+  - button "Xuất file":
+    - paragraph: Xuất file
+  - text: Mã
+  - textbox "Mã"
+  - combobox:
+    - text: (0) Trạng thái
+    - combobox
+  - combobox:
+    - text: (0) Nguồn phát sinh
+    - combobox
+  - combobox:
+    - text: Hôm nay
+    - combobox "Thời gian": Hôm nay
+    - text: Thời gian
+  - text: Khoảng thời gian
+  - textbox [disabled]
+  - table:
+    - rowgroup:
+      - row "# Mã đặt hàng nhập Thời gian Nhà cung cấp Ngày nhập dự kiến Số ngày chờ Cần trả NCC Trạng thái":
+        - columnheader "#"
+        - columnheader "Mã đặt hàng nhập"
+        - columnheader "Thời gian"
+        - columnheader "Nhà cung cấp"
+        - columnheader "Ngày nhập dự kiến"
+        - columnheader "Số ngày chờ"
+        - columnheader "Cần trả NCC"
+        - columnheader "Trạng thái"
+    - rowgroup:
+      - row "1 PDN0000184 20-06-2026 15:11 Supplier232061 20-06-2026 15:11 100.000 Phiếu tạm":
+        - cell "1"
+        - cell "PDN0000184"
+        - cell "20-06-2026 15:11"
+        - cell "Supplier232061"
+        - cell "20-06-2026 15:11"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - 'row "Mã đặt hàng nhập: PDN0000184 Thời gian: 20-06-2026 15:11 Nhà cung cấp: Supplier232061 Người tạo: admin Trạng thái: Chi nhánh: Trung Tâm Người đặt: Ngày nhập dự kiến: 20-06-2026 15:11 This is a test order for FL-001 Ghi chú # Mã Tên sản phẩm Số lượng Đơn giá Giảm giá Giá nhập Thành tiền 1 SP357959 Product656358 ((blanks)) 0 / 10 10.000 0 10.000 100.000 Tổng số lượng: Tổng số mặt hàng: Tổng tiền hàng: Giảm giá : Cần trả NCC: Tiền đã trả NCC: 0/10 0/1 0/100.000 0/0 0/100.000 0/0 Kết thúc Tạo Phiếu Nhập Xử lý Lưu Sao chép Xuất file In Hủy"':
+        - 'cell "Mã đặt hàng nhập: PDN0000184 Thời gian: 20-06-2026 15:11 Nhà cung cấp: Supplier232061 Người tạo: admin Trạng thái: Chi nhánh: Trung Tâm Người đặt: Ngày nhập dự kiến: 20-06-2026 15:11 This is a test order for FL-001 Ghi chú # Mã Tên sản phẩm Số lượng Đơn giá Giảm giá Giá nhập Thành tiền 1 SP357959 Product656358 ((blanks)) 0 / 10 10.000 0 10.000 100.000 Tổng số lượng: Tổng số mặt hàng: Tổng tiền hàng: Giảm giá : Cần trả NCC: Tiền đã trả NCC: 0/10 0/1 0/100.000 0/0 0/100.000 0/0 Kết thúc Tạo Phiếu Nhập Xử lý Lưu Sao chép Xuất file In Hủy"':
+          - tablist:
+            - tab "Thông tin" [selected]
+          - paragraph:
+            - strong: "Mã đặt hàng nhập:"
+            - text: PDN0000184
+          - separator
+          - paragraph:
+            - strong: "Thời gian:"
+            - textbox: 20-06-2026 15:11
+          - separator
+          - paragraph:
+            - strong: "Nhà cung cấp:"
+            - link "Supplier232061":
+              - /url: /supplier?code=NCC2262
+          - separator
+          - paragraph:
+            - strong: "Người tạo:"
+            - text: admin
+          - separator
+          - paragraph:
+            - strong: "Trạng thái:"
+            - combobox:
+              - text: Phiếu tạm
+              - combobox: Phiếu tạm
+          - separator
+          - paragraph:
+            - strong: "Chi nhánh:"
+            - text: Trung Tâm
+          - separator
+          - paragraph:
+            - strong: "Người đặt:"
+            - combobox:
+              - text: Test
+              - combobox
+          - separator
+          - paragraph:
+            - strong: "Ngày nhập dự kiến:"
+            - textbox: 20-06-2026 15:11
+          - separator
+          - textbox "Ghi chú": This is a test order for FL-001
+          - text: Ghi chú
+          - alert
+          - table:
+            - rowgroup:
+              - row "# Mã Tên sản phẩm Số lượng Đơn giá Giảm giá Giá nhập Thành tiền":
+                - columnheader "#"
+                - columnheader "Mã"
+                - columnheader "Tên sản phẩm"
+                - columnheader "Số lượng"
+                - columnheader "Đơn giá"
+                - columnheader "Giảm giá"
+                - columnheader "Giá nhập"
+                - columnheader "Thành tiền"
+            - rowgroup:
+              - row "1 SP357959 Product656358 ((blanks)) 0 / 10 10.000 0 10.000 100.000":
+                - cell "1"
+                - cell "SP357959":
+                  - link "SP357959":
+                    - /url: /product?code=SP357959
+                - cell "Product656358 ((blanks))":
+                  - paragraph: Product656358 ((blanks))
+                - cell "0 / 10"
+                - cell "10.000"
+                - cell "0"
+                - cell "10.000"
+                - cell "100.000"
+          - heading "Tổng số lượng:" [level=3]
+          - heading "Tổng số mặt hàng:" [level=3]
+          - heading "Tổng tiền hàng:" [level=3]
+          - heading "Giảm giá :" [level=3]
+          - heading "Cần trả NCC:" [level=3]
+          - heading "Tiền đã trả NCC:" [level=3]
+          - heading "0/10" [level=3]
+          - heading "0/1" [level=3]
+          - heading "0/100.000" [level=3]
+          - heading "0/0" [level=3]
+          - heading "0/100.000" [level=3]
+          - heading "0/0" [level=3]
+          - button "Kết thúc"
+          - button "Tạo Phiếu Nhập"
+          - button "Xử lý"
+          - button "Lưu"
+          - button "Sao chép"
+          - button "Xuất file"
+          - button "In"
+          - button "Hủy"
+      - row "2 PDN0000183 20-06-2026 15:05 Supplier152563 20-06-2026 15:05 100.000 Phiếu tạm":
+        - cell "2"
+        - cell "PDN0000183"
+        - cell "20-06-2026 15:05"
+        - cell "Supplier152563"
+        - cell "20-06-2026 15:05"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "3 PDN0000182 20-06-2026 14:58 Supplier443765 20-06-2026 14:58 100.000 Phiếu tạm":
+        - cell "3"
+        - cell "PDN0000182"
+        - cell "20-06-2026 14:58"
+        - cell "Supplier443765"
+        - cell "20-06-2026 14:58"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "4 PDN0000181 20-06-2026 14:52 Supplier870376 20-06-2026 14:52 100.000 Phiếu tạm":
+        - cell "4"
+        - cell "PDN0000181"
+        - cell "20-06-2026 14:52"
+        - cell "Supplier870376"
+        - cell "20-06-2026 14:52"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "5 PDN0000180 20-06-2026 14:46 Supplier746544 20-06-2026 14:46 100.000 Phiếu tạm":
+        - cell "5"
+        - cell "PDN0000180"
+        - cell "20-06-2026 14:46"
+        - cell "Supplier746544"
+        - cell "20-06-2026 14:46"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "6 PDN0000179 20-06-2026 14:42 Supplier437280 20-06-2026 14:42 100.000 Phiếu tạm":
+        - cell "6"
+        - cell "PDN0000179"
+        - cell "20-06-2026 14:42"
+        - cell "Supplier437280"
+        - cell "20-06-2026 14:42"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "7 PDN0000178 20-06-2026 21:33 Supplier297302 20-06-2026 21:33 100.000 Hoàn thành":
+        - cell "7"
+        - cell "PDN0000178"
+        - cell "20-06-2026 21:33"
+        - cell "Supplier297302"
+        - cell "20-06-2026 21:33"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "8 PDN0000177 20-06-2026 14:32 Supplier252879 20-06-2026 14:32 100.000 Phiếu tạm":
+        - cell "8"
+        - cell "PDN0000177"
+        - cell "20-06-2026 14:32"
+        - cell "Supplier252879"
+        - cell "20-06-2026 14:32"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "9 PDN0000176 20-06-2026 21:30 Supplier269988 20-06-2026 21:30 100.000 Hoàn thành":
+        - cell "9"
+        - cell "PDN0000176"
+        - cell "20-06-2026 21:30"
+        - cell "Supplier269988"
+        - cell "20-06-2026 21:30"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "10 PDN0000175 20-06-2026 14:28 Supplier856545 20-06-2026 14:28 100.000 Phiếu tạm":
+        - cell "10"
+        - cell "PDN0000175"
+        - cell "20-06-2026 14:28"
+        - cell "Supplier856545"
+        - cell "20-06-2026 14:28"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "11 PDN0000174 20-06-2026 21:26 Supplier900383 20-06-2026 21:26 100.000 Hoàn thành":
+        - cell "11"
+        - cell "PDN0000174"
+        - cell "20-06-2026 21:26"
+        - cell "Supplier900383"
+        - cell "20-06-2026 21:26"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "12 PDN0000173 20-06-2026 21:25 Supplier664710 20-06-2026 21:25 100.000 Hoàn thành":
+        - cell "12"
+        - cell "PDN0000173"
+        - cell "20-06-2026 21:25"
+        - cell "Supplier664710"
+        - cell "20-06-2026 21:25"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "13 PDN0000172 20-06-2026 21:22 Supplier233089 20-06-2026 21:22 100.000 Hoàn thành":
+        - cell "13"
+        - cell "PDN0000172"
+        - cell "20-06-2026 21:22"
+        - cell "Supplier233089"
+        - cell "20-06-2026 21:22"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "14 PDN0000171 20-06-2026 21:22 Supplier601789 20-06-2026 21:22 100.000 Hoàn thành":
+        - cell "14"
+        - cell "PDN0000171"
+        - cell "20-06-2026 21:22"
+        - cell "Supplier601789"
+        - cell "20-06-2026 21:22"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "15 PDN0000170 20-06-2026 21:19 Supplier914119 20-06-2026 21:19 100.000 Phiếu tạm":
+        - cell "15"
+        - cell "PDN0000170"
+        - cell "20-06-2026 21:19"
+        - cell "Supplier914119"
+        - cell "20-06-2026 21:19"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "16 PDN0000169 20-06-2026 14:15 Supplier705216 20-06-2026 14:15 100.000 Phiếu tạm":
+        - cell "16"
+        - cell "PDN0000169"
+        - cell "20-06-2026 14:15"
+        - cell "Supplier705216"
+        - cell "20-06-2026 14:15"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "17 PDN0000168 20-06-2026 20:17 Supplier641887 20-06-2026 20:17 100.000 Hoàn thành":
+        - cell "17"
+        - cell "PDN0000168"
+        - cell "20-06-2026 20:17"
+        - cell "Supplier641887"
+        - cell "20-06-2026 20:17"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "18 PDN0000167 20-06-2026 20:17 Supplier259374 20-06-2026 20:17 100.000 Hoàn thành":
+        - cell "18"
+        - cell "PDN0000167"
+        - cell "20-06-2026 20:17"
+        - cell "Supplier259374"
+        - cell "20-06-2026 20:17"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "19 PDN0000166 20-06-2026 19:50 Supplier465317 20-06-2026 19:50 100.000 Hoàn thành":
+        - cell "19"
+        - cell "PDN0000166"
+        - cell "20-06-2026 19:50"
+        - cell "Supplier465317"
+        - cell "20-06-2026 19:50"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "20 PDN0000165 20-06-2026 19:46 Supplier232344 20-06-2026 19:46 100.000 Hoàn thành":
+        - cell "20"
+        - cell "PDN0000165"
+        - cell "20-06-2026 19:46"
+        - cell "Supplier232344"
+        - cell "20-06-2026 19:46"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "21 PDN0000164 20-06-2026 19:45 Supplier219672 20-06-2026 19:45 100.000 Hoàn thành":
+        - cell "21"
+        - cell "PDN0000164"
+        - cell "20-06-2026 19:45"
+        - cell "Supplier219672"
+        - cell "20-06-2026 19:45"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "22 PDN0000163 20-06-2026 19:41 Supplier520746 20-06-2026 19:41 100.000 Hoàn thành":
+        - cell "22"
+        - cell "PDN0000163"
+        - cell "20-06-2026 19:41"
+        - cell "Supplier520746"
+        - cell "20-06-2026 19:41"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "23 PDN0000162 20-06-2026 19:37 Supplier379553 20-06-2026 19:37 100.000 Hoàn thành":
+        - cell "23"
+        - cell "PDN0000162"
+        - cell "20-06-2026 19:37"
+        - cell "Supplier379553"
+        - cell "20-06-2026 19:37"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "24 PDN0000161 20-06-2026 19:36 Supplier483276 20-06-2026 19:36 100.000 Hoàn thành":
+        - cell "24"
+        - cell "PDN0000161"
+        - cell "20-06-2026 19:36"
+        - cell "Supplier483276"
+        - cell "20-06-2026 19:36"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "25 PDN0000160 20-06-2026 19:35 Supplier914646 20-06-2026 19:35 100.000 Hoàn thành":
+        - cell "25"
+        - cell "PDN0000160"
+        - cell "20-06-2026 19:35"
+        - cell "Supplier914646"
+        - cell "20-06-2026 19:35"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "26 PDN0000159 20-06-2026 19:14 Supplier431559 20-06-2026 19:14 100.000 Hoàn thành":
+        - cell "26"
+        - cell "PDN0000159"
+        - cell "20-06-2026 19:14"
+        - cell "Supplier431559"
+        - cell "20-06-2026 19:14"
+        - cell
+        - cell "100.000"
+        - cell "Hoàn thành"
+      - row "27 PDN0000158 20-06-2026 19:07 Supplier664812 20-06-2026 19:07 100.000 Phiếu tạm":
+        - cell "27"
+        - cell "PDN0000158"
+        - cell "20-06-2026 19:07"
+        - cell "Supplier664812"
+        - cell "20-06-2026 19:07"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "28 PDN0000157 20-06-2026 19:05 Supplier827053 20-06-2026 19:05 100.000 Phiếu tạm":
+        - cell "28"
+        - cell "PDN0000157"
+        - cell "20-06-2026 19:05"
+        - cell "Supplier827053"
+        - cell "20-06-2026 19:05"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "29 PDN0000156 20-06-2026 19:04 Supplier527307 20-06-2026 19:04 100.000 Phiếu tạm":
+        - cell "29"
+        - cell "PDN0000156"
+        - cell "20-06-2026 19:04"
+        - cell "Supplier527307"
+        - cell "20-06-2026 19:04"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+      - row "30 PDN0000155 20-06-2026 19:03 Supplier442027 20-06-2026 19:03 100.000 Phiếu tạm":
+        - cell "30"
+        - cell "PDN0000155"
+        - cell "20-06-2026 19:03"
+        - cell "Supplier442027"
+        - cell "20-06-2026 19:03"
+        - cell
+        - cell "100.000"
+        - cell "Phiếu tạm"
+  - text: Tổng 31, Hiển thị
+  - combobox:
+    - text: "30"
+    - combobox: "30"
+  - navigation "Pagination Navigation":
+    - list:
+      - listitem:
+        - button "Previous page" [disabled]
+      - listitem:
+        - button "Page 1, Current page": "1"
+      - listitem:
+        - button "Go to page 2": "2"
+      - listitem:
+        - button "Next page"
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+- tooltip
+```

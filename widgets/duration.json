@@ -1,1 +1,1 @@
-[]
+[{"uid":"6784e958c8e53e76","name":"FL-001","time":{"start":1781968276417,"stop":1781968328063,"duration":51646},"status":"failed","severity":"critical"},{"uid":"56dd5d5dfb1c77ae","name":"Login Successful With Valid Credentials","time":{"start":1781968265692,"stop":1781968276410,"duration":10718},"status":"passed","severity":"critical"}]
