@@ -106,15 +106,6 @@ jobs:
             echo "allure-results does not exist; skipping report generation"
           fi
 
-      # Fail the job only after report generation is done
-      - name: Check Playwright result
-        if: ${{ always() }}
-        run: |
-          if [ "${{ steps.playwright-test.outcome }}" != "success" ]; then
-            echo "Playwright tests failed"
-            exit 1
-          fi
-
       # Upload Allure report artifact
       - name: Upload Allure Report
         if: ${{ always() }}
@@ -141,7 +132,14 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
         id: deployment
         uses: actions/deploy-pages@v4
-
+      # Fail the job only after all reports are uploaded
+      - name: Check Playwright result
+        if: ${{ always() }}
+        run: |
+          if [ "${{ steps.playwright-test.outcome }}" != "success" ]; then
+            echo "Playwright tests failed"
+            exit 1
+          fi
       # Upload artifacts
       - name: Upload test artifacts
         if: ${{ always() }}
