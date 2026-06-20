@@ -1,5 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","28086","Login Successful With Valid Credentials","Chromium","Sat Jun 20 15:29:28 UTC 2026","failed","Sat Jun 20 15:29:56 UTC 2026","Login Tests","login.spec.ts","",""
 "
         FL-001:
         1. Tạo sản phẩm thành công
@@ -13,4 +12,5 @@
         7. Tạo hóa đơn bán hàng & xử lý thanh toán
         8. Kiểm tra tồn kho
         9. Kiểm tra công nợ khách hàng
-    ","36431","FL-001","Chromium","Sat Jun 20 15:29:57 UTC 2026","passed","Sat Jun 20 15:30:33 UTC 2026","FL-001","tests_flow/FL-001.spec.ts","",""
+    ","33817","FL-001","Chromium","Sat Jun 20 15:35:07 UTC 2026","passed","Sat Jun 20 15:35:41 UTC 2026","FL-001","tests_flow/FL-001.spec.ts","",""
+"","9304","Login Successful With Valid Credentials","Chromium","Sat Jun 20 15:34:58 UTC 2026","passed","Sat Jun 20 15:35:07 UTC 2026","Login Tests","login.spec.ts","",""
