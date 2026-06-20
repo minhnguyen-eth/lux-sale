@@ -1,7 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
-const envPath = path.join(process.cwd(), 'allure-config', 'environment.properties');
+const envPath = path.join(
+  process.cwd(),
+  'allure-results',
+  'environment.properties'
+);
+
 const output = [
   `Environment=${process.env.ENVIRONMENT || 'Unknown'}`,
   `Author=${process.env.AUTHOR || 'Unknown'}`,
