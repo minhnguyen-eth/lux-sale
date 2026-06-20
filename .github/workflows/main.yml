@@ -1,7 +1,7 @@
 # ================================
 # Workflow name hiển thị trên GitHub Actions
 # ================================
-name: Playwright Demo Test
+name: Playwright LuxSales Tests
 
 # ================================
 # Permissions
@@ -124,14 +124,23 @@ jobs:
           path: allure-report/
           retention-days: 30
 
+      # Configure GitHub Pages deployment
+      - name: Configure Pages
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: actions/configure-pages@v5
+
+      # Upload Allure report to Pages artifact
+      - name: Upload Pages artifact
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./allure-report
+
       # Deploy Allure report to GitHub Pages
       - name: Deploy Allure Report
         if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          publish_branch: gh-pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       # Upload artifacts
       - name: Upload test artifacts
