@@ -5,7 +5,7 @@
   - heading "Đăng nhập" [level=1]
   - alert:
     - list:
-      - listitem: "file_put_contents(/home/dinh_dat/www/html/lux-erp/staging/server/storage/framework/cache/data/01/b5/01b5eeadfd1194d9a7001e1efd00393679fcb99c): Failed to open stream: No such file or directory"
+      - listitem: "file_put_contents(/home/dinh_dat/www/html/lux-erp/staging/server/storage/framework/cache/data/39/a2/39a22b7b4f2643feaf2885d6b352684a0d35a7c1): Failed to open stream: No such file or directory"
   - textbox "Tên đăng nhập※": admin@gmail.com
   - text: Tên đăng nhập※
   - textbox "Mật khẩu※": 12345678@@
