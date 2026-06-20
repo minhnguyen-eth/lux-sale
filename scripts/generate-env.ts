@@ -1,21 +1,21 @@
 import fs from 'fs';
 import path from 'path';
 
-const envPath = path.join(
-  process.cwd(),
-  'allure-results',
-  'environment.properties'
+const dir = 'allure-results';
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir);
+}
+
+const content = `
+Environment=${process.env.ENVIRONMENT}
+Author=${process.env.AUTHOR}
+Platform=${process.env.PLATFORM}
+Browser=${process.env.BROWSER}
+`.trim();
+
+fs.writeFileSync(
+  path.join(dir, 'environment.properties'),
+  content
 );
 
-const output = [
-  `Environment=${process.env.ENVIRONMENT || 'Unknown'}`,
-  `Author=${process.env.AUTHOR || 'Unknown'}`,
-  `Platform=${process.env.PLATFORM || process.platform}`,
-  `Browser=${process.env.BROWSER || 'Unknown'}`
-].join('\n');
-
-fs.mkdirSync(path.dirname(envPath), { recursive: true });
-fs.writeFileSync(envPath, output + '\n', 'utf8');
-
-console.log(`Generated environment file at ${envPath}`);
-console.log(output);
+console.log('environment.properties generated');

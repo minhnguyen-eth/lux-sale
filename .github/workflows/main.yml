@@ -1,29 +1,38 @@
-name: Playwright LuxSales Tests
+# ================================
+# Workflow name hiển thị trên GitHub Actions
+# ================================
+name: Playwright Test
 
+# ================================
+# Permissions
+# ================================
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
+# ================================
+# Trigger workflow
+# ================================
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [main, master]
 
   pull_request:
-    branches:
-      - main
-      - master
+    branches: [main, master]
 
+# ================================
+# Concurrency
+# ================================
 concurrency:
-  group: playwright-luxsales
+  group: playwright-demo
   cancel-in-progress: true
 
 jobs:
   test:
-    runs-on: ubuntu-latest
     timeout-minutes: 60
+
+    runs-on: ubuntu-latest
 
     env:
       ENVIRONMENT: LuxSales STG 1.0.146
@@ -40,11 +49,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 23.9.0
 
       # Cache npm
       - name: Cache npm
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -55,16 +64,28 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Install Playwright Browsers
+      # Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      # Run tests
-      - name: Run Playwright Tests
-        id: playwright-test
-        run: npx playwright test
+      # Generate Allure environment
+      - name: Generate Allure environment
+        run: npx ts-node scripts/generate-env.ts
+
+      # Run ONLY 1 demo test file
+      - name: Run Playwright  
+        run: |
+          npx playwright test 
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
+          EMPLOYEE_USERNAME: ${{ secrets.EMPLOYEE_USERNAME }}
+          EMPLOYEE_PASSWORD: ${{ secrets.EMPLOYEE_PASSWORD }}
+          EMPLOYEE2_USERNAME: ${{ secrets.EMPLOYEE2_USERNAME }}
+          EMPLOYEE2_PASSWORD: ${{ secrets.EMPLOYEE2_PASSWORD }}
+          MANAGER_TEAM_USERNAME: ${{ secrets.MANAGER_TEAM_USERNAME }}
+          MANAGER_TEAM_PASSWORD: ${{ secrets.MANAGER_TEAM_PASSWORD }}
+          MANAGER_DEPARTMENT_USERNAME: ${{ secrets.MANAGER_DEPARTMENT_USERNAME }}
+          MANAGER_DEPARTMENT_PASSWORD: ${{ secrets.MANAGER_DEPARTMENT_PASSWORD }}
           ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           DB_HOST: ${{ secrets.DB_HOST }}
@@ -72,87 +93,41 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        continue-on-error: true
 
-      # Generate Allure Environment
-      - name: Generate Allure Environment
-        if: always()
-        run: npx ts-node scripts/generate-env.ts
-
-      # Generate Allure Report
-      - name: Generate Allure Report
-        if: always()
-        run: |
-          if [ -d "allure-results" ]; then
-            npx allure generate allure-results --clean -o allure-report
-          else
-            echo "allure-results not found"
-          fi
-
-      # Debug
-      - name: Debug Allure Report
-        if: always()
-        run: |
-          echo "===== allure-report ====="
-          ls -la allure-report || true
-
-      # Upload Playwright Report
+      # Upload Playwright HTML report
       - name: Upload Playwright Report
-        if: always()
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
 
-      # Upload Allure Report
-      - name: Upload Allure Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report/
-          retention-days: 30
+      # Generate Allure Report
+      - name: Generate Allure Report
+        if: ${{ !cancelled() }}
+        run: |
+          npx allure generate allure-results --clean -o allure-report
 
-      # Upload test artifacts
+      # Deploy Allure report to GitHub Pages
+      - name: Deploy Allure Report
+        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
+
+      # Upload artifacts
       - name: Upload test artifacts
-        if: always()
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: playwright-artifacts
           path: |
             test-results/
-            playwright-report/
+            **/screenshots/**
             **/*.png
             **/*.webm
             **/*.zip
-          retention-days: 30
-
-      # Configure GitHub Pages
-      - name: Configure Pages
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: actions/configure-pages@v5
-
-      # Upload Pages Artifact
-      - name: Upload Pages Artifact
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./allure-report
-
-      # Deploy to GitHub Pages
-      - name: Deploy Allure Report
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      # Fail workflow at the very end
-      - name: Check Playwright Result
-        if: always() && steps.playwright-test.outcome != 'success'
-        run: |
-          echo "=================================="
-          echo "Playwright tests failed"
-          echo "Allure report has been generated"
-          echo "GitHub Pages deployment completed"
-          echo "=================================="
-          exit 1
+            playwright-report/
