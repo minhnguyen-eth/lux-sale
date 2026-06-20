@@ -1,5 +1,5 @@
 {
-  "homepage": "https://minhnguyen-eth.github.io/bigtime-playwright",
+  "homepage": "https://minhnguyen-eth.github.io/lux-sale",
   "scripts": {
     "pretest": "rimraf allure-results allure-report",
     "test": "npx playwright test",
