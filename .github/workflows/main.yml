@@ -137,12 +137,10 @@ jobs:
 
       # Fail the job only after all reports are uploaded
       - name: Check Playwright result
-        if: ${{ always() }}
+        if: ${{ always() && steps.playwright-test.outcome != 'success' }}
         run: |
-          if [ "${{ steps.playwright-test.outcome }}" != "success" ]; then
-            echo "Playwright tests failed"
-            exit 1
-          fi
+          echo "Playwright tests failed"
+          exit 1
 
       # Configure GitHub Pages deployment only when tests pass
       - name: Configure Pages
