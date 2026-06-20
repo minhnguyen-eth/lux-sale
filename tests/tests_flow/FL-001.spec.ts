@@ -127,7 +127,7 @@ test.describe.serial('FL-001', () => {
         await allure.step('Verify supplier debt after purchase order', async () => {
             await supplierPage.gotoSupplierPage();
             await basePage.fillSearchInput(supplierName);
-            await supplierPage.verifyCurrentDebt('100.0010');
+            await supplierPage.verifyCurrentDebt('100.000');
         });
     });
 });
