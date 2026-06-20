@@ -7,7 +7,7 @@ const dd = String(today.getDate()).padStart(2, "0");
 const mm = String(today.getMonth() + 1).padStart(2, "0");
 const yyyy = today.getFullYear();
 const dateStr = `${dd}/${mm}/${yyyy}`;
-const reportTitle = `BigTime Automation Test Report - ${dateStr}`;
+const reportTitle = `Automation Test Report - ${dateStr}`;
 
 const generateCmd = `npx allure generate allure-results --clean -o allure-report --report-title "${reportTitle}"`;
 
