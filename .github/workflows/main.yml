@@ -68,10 +68,6 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      # Generate Allure environment
-      - name: Generate Allure environment
-        run: npx ts-node scripts/generate-env.ts
-
       # Run Playwright Tests (always continue so report steps can run)
       - name: Run Playwright Tests
         id: playwright-test
@@ -96,7 +92,17 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-      # Generate Allure Report even when tests fail
+      # Generate Allure environment only after tests finish
+      - name: Generate Allure environment
+        if: ${{ always() }}
+        run: |
+          if [ -f "allure-config/environment.properties" ]; then
+            echo "environment.properties already exists"
+          else
+            npx ts-node scripts/generate-env.ts
+          fi
+
+      # Generate Allure Report only after tests finish
       - name: Generate Allure Report
         if: ${{ always() }}
         run: |
@@ -115,31 +121,6 @@ jobs:
           path: allure-report/
           retention-days: 30
 
-      # Configure GitHub Pages deployment
-      - name: Configure Pages
-        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
-        uses: actions/configure-pages@v5
-
-      # Upload Allure report to Pages artifact
-      - name: Upload Pages artifact
-        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./allure-report
-
-      # Deploy Allure report to GitHub Pages
-      - name: Deploy Allure Report
-        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
-        id: deployment
-        uses: actions/deploy-pages@v4
-      # Fail the job only after all reports are uploaded
-      - name: Check Playwright result
-        if: ${{ always() }}
-        run: |
-          if [ "${{ steps.playwright-test.outcome }}" != "success" ]; then
-            echo "Playwright tests failed"
-            exit 1
-          fi
       # Upload artifacts
       - name: Upload test artifacts
         if: ${{ always() }}
@@ -153,3 +134,30 @@ jobs:
             **/*.webm
             **/*.zip
             playwright-report/
+
+      # Fail the job only after all reports are uploaded
+      - name: Check Playwright result
+        if: ${{ always() }}
+        run: |
+          if [ "${{ steps.playwright-test.outcome }}" != "success" ]; then
+            echo "Playwright tests failed"
+            exit 1
+          fi
+
+      # Configure GitHub Pages deployment only when tests pass
+      - name: Configure Pages
+        if: ${{ steps.playwright-test.outcome == 'success' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: actions/configure-pages@v5
+
+      # Upload Allure report to Pages artifact
+      - name: Upload Pages artifact
+        if: ${{ steps.playwright-test.outcome == 'success' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./allure-report
+
+      # Deploy Allure report to GitHub Pages
+      - name: Deploy Allure Report
+        if: ${{ steps.playwright-test.outcome == 'success' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        id: deployment
+        uses: actions/deploy-pages@v4
