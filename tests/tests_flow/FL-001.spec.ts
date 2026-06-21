@@ -8,6 +8,7 @@ import { SupplierPage } from '../../pages/SupplierPage';
 import { BasePage } from '../../pages/BasePage';
 import { OrderSupplierPage } from '../../pages/OrderSupplierPage';
 import { PurchaseOrderPage } from '../../pages/PurchaseOrderPage';
+import { CustomerPage } from '../../pages/CustomerPage';
 
 test.describe.serial('FL-001', () => {
     let loginPage: LoginPage;
@@ -16,6 +17,7 @@ test.describe.serial('FL-001', () => {
     let supplierPage: SupplierPage;
     let orderSupplierPage: OrderSupplierPage;
     let purchaseOrderPage: PurchaseOrderPage;
+    let customerPage: CustomerPage;
     let basePage: BasePage;
 
     test.beforeEach(async ({ page }) => {
@@ -30,6 +32,7 @@ test.describe.serial('FL-001', () => {
         supplierPage = new SupplierPage(page);
         orderSupplierPage = new OrderSupplierPage(page);
         purchaseOrderPage = new PurchaseOrderPage(page);
+        customerPage = new CustomerPage(page);
         basePage = new BasePage(page);
         await loginPage.goto();
     });
@@ -128,7 +131,24 @@ test.describe.serial('FL-001', () => {
         await allure.step('Verify supplier debt after purchase order', async () => {
             await supplierPage.gotoSupplierPage();
             await basePage.fillSearchInput(supplierName);
-            await supplierPage.verifyCurrentDebt('100.000');
+            await supplierPage.verifyCurrentDebt('100.000'); // công nợ 100.000
         });
+
+        // Kiểm tra tồn kho sau khi nhập hàng
+        await allure.step('Verify product stock after purchase order', async () => {
+            await productPage.gotoProductPage();
+            await productPage.fillSearchProductInput(productName);
+            await productPage.verifyInventoryQuantity('10'); // tồn kho 10
+        });
+
+        // // Tạo khách hàng mới
+        // const customerName = `Customer${Math.floor(100000 + Math.random() * 900000)}`;
+        // await allure.step('Create a new customer', async () => {
+        //     await customerPage.gotoCustomerPage();
+        //     await basePage.clickInsertButton();
+        //     await basePage.fillHandler(customerName);
+        //     await basePage.clickSaveButton();
+        //     await toastPage.getToastSuccess();
+        // });
     });
 });
