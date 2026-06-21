@@ -1,1 +1,1 @@
-{"total":2,"items":[]}
+{"total":2,"items":[{"uid":"07ccdc9b95bf3f4817e5955bf1854cdd","name":"Login Feature","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}},{"uid":"77bbf3a68a63fafe90524f7fc2b317d7","name":"FL-001","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}
