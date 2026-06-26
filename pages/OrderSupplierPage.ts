@@ -28,6 +28,7 @@ export class OrderSupplierPage extends BasePage {
         ]);
 
         await newPage.waitForLoadState('domcontentloaded');
+        await newPage.bringToFront();
         return newPage;
     }
 

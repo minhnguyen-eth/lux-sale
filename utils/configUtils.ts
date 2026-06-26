@@ -16,6 +16,16 @@ export class Config {
     return process.env.ADMIN_PASSWORD || '';
   }
 
+  // Manager Account
+   static get manager_username(): string {
+    return process.env.MANAGER_USERNAME || '';
+  }
+
+  static get manager_password(): string {
+    return process.env.MANAGER_PASSWORD || '';
+  }
+
+
   // Connect database
   static get db_host(): string {
     return process.env.DB_HOST || '';

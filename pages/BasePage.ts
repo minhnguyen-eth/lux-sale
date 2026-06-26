@@ -8,7 +8,14 @@ export class BasePage extends SafeActions {
     readonly SAVE_BUTTON: Locator;
     readonly DONE_BUTTON: Locator;
     readonly AGREE_BUTTON: Locator;
-    readonly NO_BUTTON: Locator
+    readonly YES_BUTTON: Locator;
+    readonly NO_BUTTON: Locator;
+    readonly HANDLER_BUTTON: Locator;
+    readonly CREATE_BILL_BUTTON: Locator;
+    readonly PAYMENT_BUTTON: Locator;
+    readonly CANCEL_BUTTON: Locator;
+
+
 
 
     // Inputs / Textareas
@@ -16,20 +23,43 @@ export class BasePage extends SafeActions {
     readonly NOTE: Locator;
     readonly QUANTITY_INPUT: Locator;
     readonly SEARCH_INPUT: Locator;
+    readonly SEARCH_PRODUCT_INPUT: Locator;
+    readonly REASON_INPUT: Locator;
+
 
     // Status Indicators / Labels
 
 
     // Dropdowns & Comboboxes
     readonly PRODUCT_NAME_COMBOBOX: Locator;
+    readonly SEARCH_CUSTOMER_COMBOBOX: Locator;
+    readonly SEARCH_PRODUCT_COMBOBOX: Locator;
 
 
     // Others
     readonly ROW_1: Locator;
+    readonly FIRST_CHECKBOX: Locator;
+
+
+    // Toast
+    readonly SUCCESS_TOAST: Locator;
+    readonly FAILED_TOAST: Locator;
+
 
 
     constructor(page: Page) {
         super(page);
+        this.FIRST_CHECKBOX = page.getByRole('checkbox');
+        this.CANCEL_BUTTON = page.getByRole('button', { name: 'Hủy' });
+        this.REASON_INPUT = page.getByRole('textbox', { name: 'Lý do※' });
+        this.YES_BUTTON = page.getByRole('button', { name: 'Có' });
+        this.SUCCESS_TOAST = page.locator('//div[contains(text(),"Thành công")]');
+        this.FAILED_TOAST = page.locator('//div[contains(text(),"Thất bại")]')
+        this.SEARCH_PRODUCT_COMBOBOX = page.getByRole('combobox', { name: 'Tìm sản phẩm' });
+        this.PAYMENT_BUTTON = page.getByRole('button', { name: 'Thanh toán' });
+        this.CREATE_BILL_BUTTON = page.getByRole('button', { name: 'Tạo hóa đơn' });
+        this.HANDLER_BUTTON = page.getByRole('button', { name: 'Xử lý' });
+        this.SEARCH_PRODUCT_INPUT = page.getByRole('textbox', { name: 'Tìm kiếm sản phẩm' });
         this.SEARCH_INPUT = page.getByRole('textbox', { name: 'Tìm kiếm' });
         this.DONE_BUTTON = page.getByRole('button', { name: 'Hoàn thành' });
         this.AGREE_BUTTON = page.getByRole('button', { name: 'Đồng ý' });
@@ -41,6 +71,7 @@ export class BasePage extends SafeActions {
         this.HANDLER = page.getByRole('combobox', { name: 'Người xử lý※' });
         this.NOTE = page.getByRole('textbox', { name: 'Ghi chú' });
         this.QUANTITY_INPUT = page.locator(`//tr[td[contains(., '1')]]//td[5]//input[@type='text']`);
+        this.SEARCH_CUSTOMER_COMBOBOX = page.getByRole('combobox', { name: 'Tìm khách hàng※' });
     }
 
     /* Menu Cards */
@@ -53,6 +84,58 @@ export class BasePage extends SafeActions {
     }
     /* Menu Cards */
 
+    async fillReason(reason: string) {
+        await this.safeFill(this.REASON_INPUT, reason);
+    }
+
+    async clickCancelButton() {
+        await this.safeClick(this.CANCEL_BUTTON);
+    }
+
+    async clickFirstCheckbox() {
+        await this.safeClick(this.FIRST_CHECKBOX, { nth: 0 });
+    }
+
+    async getToastSuccess() {
+        await this.safeVerifyToHaveText(this.SUCCESS_TOAST, 'Thành công');
+    }
+
+    async getToastFailed() {
+        await this.safeVerifyToHaveText(this.FAILED_TOAST, 'Thất bại');
+    }
+
+    async fillSearchProductCombobox(productName: string) {
+        await this.safeFill(this.SEARCH_PRODUCT_COMBOBOX, productName);
+        const option = this.page.getByRole('option', { name: productName });
+        await this.safeClick(option, { nth: 0 });
+    }
+
+    async clickCreateBillButton() {
+        await this.safeClick(this.CREATE_BILL_BUTTON);
+    }
+
+    async clickYesButton() {
+        await this.safeClick(this.YES_BUTTON);
+    }
+
+    // CLICK NÚT XỬ LÝ
+    async clickHandlerButton() {
+        await this.safeClick(this.HANDLER_BUTTON);
+    }
+
+    async clickPaymentButton() {
+        await this.safeClick(this.PAYMENT_BUTTON);
+    }
+
+    async fillCustomerNameCombobox(customerName: string) {
+        await this.safeFill(this.SEARCH_CUSTOMER_COMBOBOX, customerName);
+        const option = this.page.getByRole('option', { name: customerName });
+        await this.safeClick(option, { nth: 0 });
+    }
+
+    async fillSearchProductInput(text: string) {
+        await this.safeFill(this.SEARCH_PRODUCT_INPUT, text);
+    }
 
     async fillSearchInput(text: string) {
         await this.safeFill(this.SEARCH_INPUT, text);
