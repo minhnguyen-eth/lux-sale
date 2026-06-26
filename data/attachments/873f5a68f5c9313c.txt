@@ -1,0 +1,7 @@
+Cleared 1 rows in customers with condition.
+Cleared 1 rows in suppliers with condition.
+Cleared 0 rows in products with condition.
+Cleared 1 rows in orders with condition.
+Cleared 0 rows in bills with condition.
+Cleared 1 rows in order_suppliers with condition.
+Cleared 1 rows in purchase_transactions with condition.

@@ -1,9 +1,30 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","0","TC-B003:Return goods from an invoice","Chromium","Fri Jun 26 10:28:09 UTC 2026","skipped","Fri Jun 26 10:28:09 UTC 2026","Bill Tests","bill.spec.ts","",""
-"","1","TC-B002: Selling to retail customers and checking inventory","Chromium","Fri Jun 26 10:28:09 UTC 2026","skipped","Fri Jun 26 10:28:09 UTC 2026","Bill Tests","bill.spec.ts","",""
-"","7540","Login Successful With Valid Credentials","Chromium","Fri Jun 26 10:28:10 UTC 2026","passed","Fri Jun 26 10:28:17 UTC 2026","Login Tests","login.spec.ts","",""
-"","3147","TC-B001 Selling to retail customers and checking inventory","Chromium","Fri Jun 26 10:28:06 UTC 2026","failed","Fri Jun 26 10:28:09 UTC 2026","Bill Tests","bill.spec.ts","",""
-"","1","TC-B004: Selling to customers with debt 100% from an invoice","Chromium","Fri Jun 26 10:28:09 UTC 2026","skipped","Fri Jun 26 10:28:09 UTC 2026","Bill Tests","bill.spec.ts","",""
-"","0","TC-B006: Cancel bill and verify customer debt","Chromium","Fri Jun 26 10:28:09 UTC 2026","skipped","Fri Jun 26 10:28:09 UTC 2026","Bill Tests","bill.spec.ts","",""
-"","220","FL-001","Chromium","Fri Jun 26 10:28:17 UTC 2026","failed","Fri Jun 26 10:28:18 UTC 2026","FL-001","tests_flow/FL-001.spec.ts","",""
-"","0","TC-B005: Selling to customers with partial payment","Chromium","Fri Jun 26 10:28:09 UTC 2026","skipped","Fri Jun 26 10:28:09 UTC 2026","Bill Tests","bill.spec.ts","",""
+"
+           TC-B001: Bán hàng cho khách lẻ không thanh toán, không giảm giá 
+            1. Thêm sản phẩm giá bán 15.000, tồn kho 2
+            2. Bán hàng cho khách lẻ không thanh toán 
+            3. kiểm tra tồn kho sau khi bán = 1
+            4. Kiểm tra hóa đơn tổng tiền hóa đơn 15.000, giảm giá 0, tiền khách trả 0
+            5. Hủy bill 
+            6. Kiểm tra tồn kho sau khi hủy = 2
+            ","51017","TC-B001 Selling to retail customers and checking inventory","Chromium","Fri Jun 26 10:32:37 UTC 2026","failed","Fri Jun 26 10:33:28 UTC 2026","Bill Tests","bill.spec.ts","",""
+"","1","TC-B004: Selling to customers with debt 100% from an invoice","Chromium","Fri Jun 26 10:33:28 UTC 2026","skipped","Fri Jun 26 10:33:28 UTC 2026","Bill Tests","bill.spec.ts","",""
+"","7773","Login Successful With Valid Credentials","Chromium","Fri Jun 26 10:33:29 UTC 2026","passed","Fri Jun 26 10:33:36 UTC 2026","Login Tests","login.spec.ts","",""
+"
+        FL-001:
+        1. Tạo sản phẩm thành công
+        2. Đặt hàng nhập SP mới tạo 
+           2.1 PRE-CONDITION: Tạo nhà cung cấp mới
+        3. Tạo phiếu nhập - Nhập hàng
+        4. Kiểm tra tồn kho sau khi nhập hàng
+        5. Kiểm tra công nợ NCC
+        6. Tạo phiếu đặt hàng
+           6.1 PRE-CONDITION: Tạo khách hàng mới
+        7. Tạo hóa đơn bán hàng & xử lý thanh toán
+        8. Kiểm tra tồn kho
+        9. Kiểm tra công nợ khách hàng
+    ","58492","FL-001","Chromium","Fri Jun 26 10:33:36 UTC 2026","failed","Fri Jun 26 10:34:35 UTC 2026","FL-001","tests_flow/FL-001.spec.ts","",""
+"","0","TC-B005: Selling to customers with partial payment","Chromium","Fri Jun 26 10:33:28 UTC 2026","skipped","Fri Jun 26 10:33:28 UTC 2026","Bill Tests","bill.spec.ts","",""
+"","0","TC-B003:Return goods from an invoice","Chromium","Fri Jun 26 10:33:28 UTC 2026","skipped","Fri Jun 26 10:33:28 UTC 2026","Bill Tests","bill.spec.ts","",""
+"","1","TC-B002: Selling to retail customers and checking inventory","Chromium","Fri Jun 26 10:33:28 UTC 2026","skipped","Fri Jun 26 10:33:28 UTC 2026","Bill Tests","bill.spec.ts","",""
+"","0","TC-B006: Cancel bill and verify customer debt","Chromium","Fri Jun 26 10:33:28 UTC 2026","skipped","Fri Jun 26 10:33:28 UTC 2026","Bill Tests","bill.spec.ts","",""

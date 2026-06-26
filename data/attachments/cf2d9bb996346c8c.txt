@@ -1,0 +1,32 @@
+# Page snapshot
+
+```yaml
+- main:
+  - heading "Đăng nhập" [level=1]
+  - text: Tên đăng nhập※
+  - textbox "Tên đăng nhập※"
+  - alert: Nhập tên đăng nhập
+  - text: Mật khẩu※
+  - textbox "Mật khẩu※"
+  - button "appended action": 󰈉
+  - alert: Nhập mật khẩu
+  - checkbox "Nhớ tài khoản" [checked]
+  - text: Nhớ tài khoản
+  - button "Quản trị"
+  - button "Bán hàng"
+  - link "Quên mật khẩu":
+    - /url: /forgot-password
+  - img
+- list:
+  - listitem
+  - listitem
+  - listitem
+  - listitem
+  - listitem
+  - listitem
+  - listitem
+  - listitem
+  - listitem
+  - listitem
+- tooltip
+```

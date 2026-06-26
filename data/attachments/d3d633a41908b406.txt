@@ -1,1 +1,3 @@
+Cleared 1 rows in bills with condition.
+Cleared 3 rows in products with condition.
 📸 Screenshot saved: /home/runner/work/lux-sale/lux-sale/screenshots/tc-b001_selling_to_retail_customers_and_checking_inventory.png
